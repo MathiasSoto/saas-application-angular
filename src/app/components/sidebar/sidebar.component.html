@@ -1,0 +1,59 @@
+<div class=" h-screen w-fit z-10">
+    <nav class="shadow-md h-full {{ status ? 'w-72': ' w-0 md:w-20' }} bg-blue-700 text-white flex flex-col
+        duration-300 absolute md:static ">
+
+        <!-- Header -->
+        <div class=" h-20 border-b border-blue-800">
+            <div class="p-3 flex justify-between items-center">
+                <button (click)="toggle()" [ngClass]="{ 'block': !status, 'hidden': status }"
+                    class="hover:cursor-pointer ">
+                    <img src="assets/images/logo.png" class=" w-14 rounded-md" alt="Logo" />
+                </button>
+
+                <img src="assets/images/logo.png" class=" w-14 rounded-md"
+                    [ngClass]="{ 'block': status, 'hidden': !status }" alt="Logo" />
+                <button (click)="toggle()" [ngClass]="{ 'block': status, 'hidden': !status }"
+                    class="hover:cursor-pointer ">
+                    <ng-icon name="heroBars3" class=" text-2xl md:hidden" />
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu -->
+        <div class="flex-1 w-full">
+            <ul class="p-3 overflow-hidden">
+                <li class="p-3 hover:bg-blue-800 cursor-pointer rounded-md duration-300" *ngFor="let item of menu">
+                    <a href="{{ item.url }}">
+                        <div class="flex items-center gap-4 duration-300">
+                            <p class=" mx-1">
+                                <ng-icon name="{{ item.icon }}" class=" text-2xl md:hidden" />
+                            </p>
+                            <p class=" {{ status == false ? 'w-0 translate-x-24' : ''}} duration-300 overflow-hidden">
+                                {{ item.text }}</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <div class="border-t border-blue-800 hover:bg-blue-800 cursor-pointer  duration-300">
+            <div class="flex items-center gap-1 p-3 overflow-hidden">
+                <p class=" mx-1">
+                    <ng-icon name="heroUserCircle" class=" text-3xl md:hidden mx-2" />
+                </p>
+
+                <div class="flex items-center justify-between w-full">
+                    <p class="whitespace-nowrap {{ status == false ? 'w-0 translate-x-24': ''}} duration-300">
+                        Mathias Soto
+                    </p>
+                    <p>
+                        <ng-icon name="heroEllipsisVertical"
+                            class=" text-2xl md:hidden mx-2 {{ status == false ? ' w-0 translate-x-24':''}} duration-300"></ng-icon>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+</div>
